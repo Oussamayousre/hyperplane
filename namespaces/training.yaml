@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team-training           # model training jobs
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: gpu-quota
+  namespace: team-training
+spec:
+  hard:
+    requests.nvidia.com/gpu: "1"   # 1 GPU for training
+    limits.nvidia.com/gpu: "1"

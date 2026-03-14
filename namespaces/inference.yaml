@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team-inference          # production LLM serving
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: gpu-quota
+  namespace: team-inference
+spec:
+  hard:
+    requests.nvidia.com/gpu: "2"   # can request up to 2 GPUs
+    limits.nvidia.com/gpu: "2"     # hard cap at 2 GPUs

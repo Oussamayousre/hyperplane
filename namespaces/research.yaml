@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team-research           # notebooks, experiments
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: gpu-quota
+  namespace: team-research
+spec:
+  hard:
+    requests.nvidia.com/gpu: "1"   # 1 GPU for research
+    limits.nvidia.com/gpu: "1"
