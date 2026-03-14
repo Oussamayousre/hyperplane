@@ -1,0 +1,21 @@
+ingressController:
+  enabled: true                    # KIC manages all config via k8s objects
+
+proxy:
+  type: NodePort
+  http:
+    nodePort: 30080
+  tls:
+    nodePort: 30443
+
+admin:
+  enabled: true
+  type: ClusterIP
+  http:
+    enabled: true
+
+postgresql:
+  enabled: false                   # DB-less mode
+
+env:
+  database: "off"                  # DB-less, but KIC feeds config — no file needed
